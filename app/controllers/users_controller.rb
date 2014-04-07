@@ -26,11 +26,10 @@ class UsersController < ApplicationController
   end
 
   def update
-      if @user.update(user_params)
-        redirect_to @user, notice: 'User was successfully updated.' 
-      else
-        render action: 'edit' 
-      end
+    if @user.update(user_params)
+      redirect_to @user, notice: 'User was successfully updated.' 
+    else
+      render action: 'edit' 
     end
   end
 
@@ -38,7 +37,6 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     redirect_to users_url 
-    end
   end
 
   private
@@ -47,6 +45,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :email)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 end
