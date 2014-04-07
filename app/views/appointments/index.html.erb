@@ -1,29 +1,16 @@
-<h1>Listing appointments</h1>
+<h1>Currently in the Queue</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Appointment date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<% @appointments.each do |appointment| %>
+  <ul>
+      <%= gravatar_for(appointment.user) %>
+      <%= appointment.user.name %>
+      <%= time_ago_in_words(appointment.created_at) %> ago
+      <% if current_user.admin? %>
+        <%= link_to 'Destroy', appointment, method: :delete %></li>
+      <% end %>
+  </ul>
+<% end %>
 
-  <tbody>
-    <% @appointments.each do |appointment| %>
-      <tr>
-        <td><%= appointment.user_id %></td>
-        <td><%= appointment.appointment_date %></td>
-        <td><%= link_to 'Show', appointment %></td>
-        <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
-        <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Appointment', new_appointment_path %>
+<% unless current_user.admin? %>
+  <%= link_to 'New Appointment', new_appointment_path %>
+<% end %>

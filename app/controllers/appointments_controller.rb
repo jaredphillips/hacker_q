@@ -1,5 +1,7 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user,   only: [:edit, :update]
+  before_action :admin_user,     only: :destroy
 
   def index
     @appointments = Appointment.all
@@ -16,7 +18,7 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = Appointment.new(appointment_params)
+    @appointment = Appointment.new(user_id: current_user.id)
     if @appointment.save
       redirect_to appointments_path, notice: 'Appointment was successfully created.' 
     else
@@ -33,7 +35,7 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    @appointment.destroy
+    Appointment.find(params[:id]).destroy
     redirect_to appointments_url 
   end
 
@@ -43,6 +45,11 @@ class AppointmentsController < ApplicationController
     end
 
     def appointment_params
-      params.require(:appointment).permit(:user_id, :appointment_date)
+      params.require(:appointment).permit(:user_id)
     end
+
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
+
 end

@@ -1,0 +1,17 @@
+<%= link_to "Hacker Q", appointments_path %>
+<ul>
+  <li><%= link_to "Home", appointments_path %></li>
+</ul>
+<% if signed_in? %>
+  <ul>    
+  	<li><%= gravatar_for(current_user) %> <%= current_user.name %></li>
+  	<li><%= link_to "Edit Settings", edit_user_path(current_user) %></li>
+    <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+  </ul>
+<% else %>
+  <ul>
+    <li><%= link_to "Sign in", signin_path %></li>
+  </ul>
+<% end %>
+
+
