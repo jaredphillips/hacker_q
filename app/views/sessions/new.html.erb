@@ -1,18 +1,16 @@
-<h1>Sign in</h1>
+<h2 class="img-replace-logo">Sign in</h2>
 
 <%= form_for(:session, url: sessions_path) do |f| %>
   
-  <div class="field">
-    <%= f.text_field :email %>
     <%= f.label :email %>
-  </div>
+    <%= f.email_field :email %>
 
-  <div class="field">
-    <%= f.password_field :password %>
     <%= f.label :password %>
-  </div>
+    <%= f.password_field :password %>
 
   <%= f.submit "Sign in" %>
 <% end %>
 
-<p><%= link_to "New user?", signup_path %></p>
+<nav class="nav-bottom">
+	<%= link_to "New user?", signup_path %>
+</nav>

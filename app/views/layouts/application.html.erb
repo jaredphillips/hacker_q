@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HackerQ</title>
+  <title>hackerQueue</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<header>
-		<%= render 'layouts/header' %>
+	<header class="clearfix">
+		<nav class="nav-global clearfix">
+			<%= render 'layouts/header' %>
+			</nav>
 	</header>
-
-
-	<%= yield %>
+	<div class="container">
+		<%= yield %>
+	</div>
 
 </body>
 </html>
