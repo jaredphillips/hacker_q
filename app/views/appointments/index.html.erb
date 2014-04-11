@@ -12,5 +12,7 @@
 <% end %>
 
 <% #unless current_user.admin? %>
-  <%= link_to 'New Appointment', new_appointment_path %>
+	<nav class="nav-bottom">
+	  <%= link_to 'New Appointment', new_appointment_path %>
+  </nav>
 <% #end %>

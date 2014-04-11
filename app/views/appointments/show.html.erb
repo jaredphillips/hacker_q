@@ -10,5 +10,7 @@
   <%= @appointment.appointment_date %>
 </p>
 
-<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
-<%= link_to 'Back', appointments_path %>
+<nav class="nav-bottom">
+	<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
+	<%= link_to 'Back', appointments_path %>
+</nav>

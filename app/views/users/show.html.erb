@@ -6,5 +6,7 @@
 </h1>  
 <h2><%= @user.email %></h2>
 
-<%= link_to 'Edit Profile', edit_user_path(@user) %> |
-<%= link_to 'Join the Q', new_appointment_path %>
+<nav class="nav-bottom">
+	<%= link_to 'Edit Profile', edit_user_path(@user) %> |
+	<%= link_to 'Join the Queue', new_appointment_path %>
+</nav>
