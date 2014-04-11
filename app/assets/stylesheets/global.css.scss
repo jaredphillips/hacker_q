@@ -110,6 +110,12 @@ form {
   margin: 2rem auto;
 }
 
+label {
+  display: block;
+  text-align: center;
+  margin-bottom: .25rem;
+}
+
 input[type="text"], input[type="email"], input[type="password"] {
   width: 100%;
   border: 1px solid rgba($red, .25);
